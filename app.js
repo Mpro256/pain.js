@@ -27,7 +27,11 @@ app.post('/painchecker', function(req,res) {
 
     const isBlocked = blockips.includes(ip2);
 
-    res.status(403).json({ blocked: isBlocked });
+    if (isBlocked) {
+        res.status(403).json({ blocked: true });
+    } else {
+        res.status(200).json({ blocked: false });
+    }
 
 
 
