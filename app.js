@@ -32,7 +32,7 @@ app.post('/paingiver', function(req, res) {
                 res.status(500).json({ error: 'Failed to block IP' });
             } else {
                 console.log("Blocked " + ip + ", what an idiot for doing that");
-                res.status(403).json({ blocked: true, ip: ip });
+                res.status(200).json({ blocked: true, ip: ip });
             }
         });
     });
@@ -58,7 +58,7 @@ app.post('/painchecker', function(req, res) {
             // Set the status code based on whether the IP is blocked or not
             if (isBlocked) {
                 console.log(ip + " is blocked");
-                res.status(403).json({ blocked: true });
+                res.status(200).json({ blocked: true });
             } else {
                 console.log(ip + " is not blocked");
                 res.status(200).json({ blocked: false });
